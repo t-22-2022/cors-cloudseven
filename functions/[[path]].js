@@ -1,5 +1,15 @@
 export async function onRequest(context) {
 
+  if (context.request.method === "OPTIONS") {
+    return new Response(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+        "Access-Control-Allow-Headers": "*"
+      }
+    });
+  }
+
   const url = new URL(context.request.url);
   const path = url.pathname.slice(1);
 
@@ -16,9 +26,12 @@ export async function onRequest(context) {
     }
   });
 
+  const headers = new Headers(resp.headers);
+  headers.set("Access-Control-Allow-Origin", "*");
+
   return new Response(resp.body, {
     status: resp.status,
-    headers: resp.headers
+    headers: headers
   });
 
 }
