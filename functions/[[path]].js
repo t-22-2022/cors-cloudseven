@@ -4,7 +4,7 @@ export async function onRequest(context) {
   const path = url.pathname.slice(1);
 
   if (!path) {
-    return new Response("CloudSeven SG Proxy Ready");
+    return new Response("CloudSeven Cors Ready");
   }
 
   const target = decodeURIComponent(path);
