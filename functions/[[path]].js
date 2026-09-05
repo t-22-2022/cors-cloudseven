@@ -18,7 +18,7 @@ export async function onRequest(context) {
   console.log("🔗 Target:", target);
 
   const headers = new Headers();
-  headers.set("User-Agent", request.headers.get("User-Agent") || "OTT Navigator 1.9.6.4 (Android)");
+  headers.set("User-Agent", request.headers.get("User-Agent") || "OTT Navigator/1.9.6.4 (linux;android 10; en; 11gkvct)");
   headers.set("Referer", target);
   headers.set("Origin", target);
 
